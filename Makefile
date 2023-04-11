@@ -261,7 +261,10 @@ clean:
 	$(MAKE) clean -C dpf/utils/lv2-ttl-generator
 	$(MAKE) clean -C plugins
 	$(MAKE) clean -C src
-	rm -rf bin build build-headless
+	rm -rf bin build build-headless dpf/utils/lv2_ttl_generator.d
+	# FIXME
+	rm -f src/Rack/BaconMusic/default-skin.json
+	rm -f src/Rack/SurgeXTRack/default-skin.json
 
 # --------------------------------------------------------------
 # Install step
@@ -315,7 +318,6 @@ TAR_ARGS = \
 	--exclude="*.kdev*" \
 	--exclude=".travis*" \
 	--exclude=".vscode*" \
-	--exclude="carla/source/modules/juce_*" \
 	--exclude="carla/source/native-plugins/external/zynaddsubfx*" \
 	--exclude="src/Rack/dep/osdialog/osdialog_*" \
 	--exclude="src/Rack/icon.*" \
@@ -350,30 +352,10 @@ TAR_ARGS = \
 	--exclude=plugins/BogaudioModules/res-src \
 	--exclude=plugins/Cardinal/orig \
 	--exclude=plugins/GrandeModular/res-src \
-	--exclude=plugins/surgext/surge/libs/JUCE/docs \
-	--exclude=plugins/surgext/surge/libs/JUCE/examples \
-	--exclude=plugins/surgext/surge/libs/JUCE/extras \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/CMakeLists.txt \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_analytics \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_audio_devices \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_audio_plugin_client \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_audio_processors \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_audio_utils \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_box2d \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_cryptography \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_data_structures \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_events \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_graphics \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_gui_basics \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_gui_extra \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_opengl \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_osc \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_product_unlocking \
-	--exclude=plugins/surgext/surge/libs/JUCE/modules/juce_video \
+	--exclude=plugins/surgext/surge/libs/JUCE \
 	--exclude=plugins/surgext/surge/resources/data/patches_3rdparty \
 	--exclude=plugins/surgext/surge/resources/data/patches_factory \
 	--exclude=plugins/surgext/surge/resources/data/wavetables_3rdparty \
-	--exclude=src/MOD \
 	--exclude=src/Rack/adapters \
 	--exclude=src/Rack/dep/filesystem/cmake \
 	--exclude=src/Rack/dep/filesystem/examples \
